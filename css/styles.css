@@ -2,48 +2,14 @@ body {
   background-color: black;
   color: white;
 }
-div {
-  padding: 0px;
-}
 #container {
   height: 600px;
   width: 650px;
   margin-left: auto;
   margin-right: auto;
 }
-div .topleft, .middleleft {
-    height: 200px;
-    width: 200px;
-    border-right: 5px solid black;
-    border-bottom: 1px solid black;
-    display: inline-block;
-    background-color: white;
-}
-div .topcenter, .middlecenter {
-  height: 200px;
-  width: 200px;
-  border-bottom: 1px solid black;
-  display: inline-block;
-  background-color: white;
-}
-div .topright, .middleright {
-  height: 200px;
-  width: 200px;
-  border-left: 5px solid black;
-  border-bottom: 1px solid black;
-  display: inline-block;
-  background-color: white;
-}
-div .bottomright, .bottomcenter{
-  height: 200px;
-  width: 200px;
-  border-left: 5px solid black;
-  display: inline-block;
-  background-color: white;
-}
-div .bottomleft {
-  height: 200px;
-  width: 200px;
-  display: inline-block;
-  background-color: white;
+table td {
+  height: 100px;
+  width: 100px;
+  border: 1px solid white;
 }
