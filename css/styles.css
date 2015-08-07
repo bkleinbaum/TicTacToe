@@ -4,6 +4,9 @@
 }
 body {
   text-align: center;
+    background:url("http://i.imgur.com/jZcmErl.jpg") no-repeat;
+    background-position: center;
+    background-size: cover;
 }
 #board {
 	width: 600px;
@@ -12,10 +15,13 @@ body {
   margin-right: auto;
 }
 div {
+	height: 80px;
+	width: 80px;
   display: inline-block;
   border: 1px solid black;
 }
 .cell {
+	float: left;
 	width: 180px;
 	height: 180px;
 }
@@ -27,4 +33,10 @@ div {
 img {
 	height: 80%;
 	width: 80%;
+}
+h1 {
+  text-shadow: 0 0 10px #fff, 0 0 20px #fff, 0 0 30px #fff, 0 0 40px #ff00de, 0 0 70px #ff00de, 0 0 80px #ff00de, 0 0 100px #ff00de, 0 0 150px #ff00de;
+	/*8 levels of shading: base text is given a white fill, then each of the following 8 text-shadow
+	values are given larger and larger blur amounts while also getting darker hex codes.
+	this blends them as the blur gets 'bigger'*/
 }
