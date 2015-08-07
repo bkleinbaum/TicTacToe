@@ -1,12 +1,13 @@
 * {
 	font-family: "Comic Sans MS", sans-serif;
+	margin: 5px;
 }
 body {
   text-align: center;
 }
 #board {
-	width: 700px;
-	height: 700px;
+	width: 600px;
+	height: 600px;
   margin-left: auto;
   margin-right: auto;
 }
@@ -22,4 +23,8 @@ div {
 .cell:hover {
 	background-color: yellow;
 	color: black;
+}
+img {
+	height: 80%;
+	width: 80%;
 }
