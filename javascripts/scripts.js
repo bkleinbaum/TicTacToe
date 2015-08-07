@@ -1,89 +1,73 @@
-console.log('who do you think you are?');
-
-//PURPOSE: play tic tac toe
-
-//TEST: render a game board table using only jQuery
-
-function table() {
-var table = $('body').append('<table id="gameboard"><tbody>');
-$('#gameboard').append("<tr><td id='one'></td><td id='two'></td><td id='three'></td></tr>");
-$('#gameboard').append("<tr><td id='four'></td><td id='five'></td><td id='six'></td></tr>");
-$('#gameboard').append("<tr><td id='even'></td><td id='eight'></td><td id='nine'></td></tr>)");
-return table;
+var Game = function(e) {
+	this.element = e;
 }
 
-//test: generate divs for a square giving each new div an id of box + [i]
-// number*number for (i=0; i<number)
-//function selectSize(number){
-//var gameboard = $('<div>').addClass('board');
-//var boxes;
-//}
+var xSpot = "X";
+var oSpot = "O";
+var marker = xSpot;
+var plays = 0;
 
-//TEST: account for each td as one spot on the board
-function allTds() {
-var board;
-board = ["", "", "", "", "", "", "", "", ""];
-$('td').each(function(index){
-  board[index] = $('this').text();
-});
-return board;
+var switchPlayer = function() {
+	plays ++;
+	if(marker == xSpot) {
+		marker = oSpot;
+	} else {
+		marker = xSpot;
+	}
 };
 
-//TEST: check tds for three of the same kind within all the tds and log the results
-function checkGame(first, second, third){
-  if (first === 'X' && second === 'X' && third === 'X') { //if three X, user wins
-    return 1;
-  } else if (first === 'O' && second === 'O' && third === 'O') { //three O, computer wins
-    return -1;
-  } else {
-    return 0; //no winner/tie/keep playing
-  }
+function div() {
+var div = $('body').append('<div id="board"><tbody>');
+$('#board').append("<div id='0' class='cell'></div><div id='1' class='cell'></div><div id='2' class='cell'></div>");
+$('#board').append("<div id='3' class='cell'></div><div id='4' class='cell'></div><div id='5' class='cell'></div>");
+$('#board').append("<div id='6' class='cell'></div><div id='7' class='cell'></div><div id='8' class='cell'></div>");
+return div;
 }
 
-//TEST: check the td row/column for three of a kind win
-function computer(board){
-//  var board = $('#gameboard')
-return checkGame(allTds[0])+checkGame(allTds[1])+checkGame(allTds[2]) //TOP ROW
-}
-
-//TEST: check for empty tds and select one randomly for computer turn
-
-//TEST: generate result of game from data within the tds
-function gamestatus(){
-var target;
-target = $("#results"); //DIV THAT HOLDS RESULTS
-if (result > 0) {
-  target.text("USER WINS");
-} else if (result < 0) {
-  target.css("COMPUTER WINS");
-} else {
-  target.text("TIE");
-}
-}
-
-function test() {
-  var X;
-  X = $("this");
-  if (X.text("") !== "" || computer(allTds) !== 0) {
-    return;
-  }
-  X.text("X");
-}
-
-function applyX(){
-  $('#gameboard').on('click', 'td', function(){
-    $(this).text("X");
-  });
+Game.prototype.oneGo = function() {
+	this.element.addClass(marker);
+	this.element.text(marker);
+	gameState();
+	switchPlayer();
 };
 
+var gameState = function() {
+	var wins = [
+	[0,1,2], [3,4,5], [6,7,8],
+	[0,3,6], [1,4,7], [2,5,8],
+	[0,4,8], [2,4,6]
+	]
+	for (var i = 0; i < wins.length; i++) {
+		if( $('#' + wins[i][0]).text() === marker &&
+		$('#' + wins[i][1]).text() === marker &&
+		$('#' + wins[i][2]).text() === marker ) {
+			alert(marker + " wins");
+			resetGame();
+		}
+		if (plays === 8) {
+			alert("draw");
+			resetGame();
+			break;
+		};
+	} $('#masterdiv div').html(''); //when there is a winner or a draw clear all the Xs and Os from the board
+};
 
+var resetGame = function() {
+	location.reload();
+};
 
-//TEST:
+Game.prototype.listen = function() {
+	var that = this;
+	this.element.on('click', function(){
+		that.oneGo();
+		$(this).off('click');
+	});
+};
 
-$(document).ready(function(){
-
-
-table();
-$("#gameboard").click(test);
-
+$(document).ready(function() {
+  div();
+	$('.cell').each( function() {
+		var cell = new Game($(this));
+		cell.listen();
+	})
 });
