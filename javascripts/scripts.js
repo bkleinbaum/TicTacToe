@@ -27,8 +27,8 @@ if (jurassicAI.contents().length == 0) {
 jurassicAI.addClass("O");
 jurassicAI.data('player', 'O');
 jurassicAI.html('<img src="img/O.png">');
-} else { 
-randomChoice();
+} else if (jurassicAI == "") {
+	alert("Draw")
 }
 }
 randomChoice();
