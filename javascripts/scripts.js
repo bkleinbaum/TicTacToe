@@ -28,7 +28,7 @@ jurassicAI.addClass("O");
 jurassicAI.data('player', 'O');
 jurassicAI.html('<img src="img/O.png">');
 } else {
-	randomChoice();
+	randomChoice()
 } else {
 	alert("boooo")	
 }
