@@ -54,10 +54,10 @@ Game.prototype.oneGo = function() { //if they choose single or AI
 	switchPlayer(); //if there are no wins, switch players
 	//resultsArea();
 } if (yesOrNo === true) { //to play the AI
-	randomChoice(); //the AI searches all the empty divs and chooses a random one
 	this.element.addClass(xSpot); //it adds its X or O to the class
 	this.element.data('player', xSpot); //adds its X or O to the data
 	this.element.html( "<img src='img/" +xSpot+ ".png'>"); //adds its image into the div
+	randomChoice(); //the AI searches all the empty divs and chooses a random one
 	gameState(); //checks for a win
 	switchPlayer(); //switches back to the user
 }
